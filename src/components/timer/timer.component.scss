@@ -1,0 +1,11 @@
+component-timer {
+    .timer-button {
+      font-size: 4rem !important;
+      height: 1em !important;
+      margin-left: auto;
+      margin-right: auto;
+    }  
+    .no-bottom-border.item .item-inner {
+      border-bottom: none !important;
+    }
+  }

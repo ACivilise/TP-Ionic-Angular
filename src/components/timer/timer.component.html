@@ -1,0 +1,6 @@
+<ion-card *ngIf="timer">
+    <ion-item class="no-bottom-border item">
+        <button ion-button 
+                large full clear class="timer-button timer-text" (click)="handleClick()">{{timer.displayTime}}</button>
+    </ion-item>
+</ion-card>

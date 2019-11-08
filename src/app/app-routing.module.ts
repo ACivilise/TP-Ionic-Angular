@@ -4,20 +4,24 @@ import { PreloadAllModules, RouterModule, Routes } from '@angular/router';
 const routes: Routes = [
   {
     path: '',
-    redirectTo: 'first',
+    redirectTo: 'menu',
     pathMatch: 'full'
+  },
+  {
+    path: 'menu',
+    loadChildren: () => import('./menu/menu.module').then(m => m.MenuPageModule)
   },
   {
     path: 'first',
     loadChildren: () => import('./first/first.module').then(m => m.FirstPageModule)
   },
   {
-    path: 'home',
-    loadChildren: () => import('./home/home.module').then(m => m.HomePageModule)
+    path: 'geoloc',
+    loadChildren: () => import('./geoloc/geoloc.module').then(m => m.GeolocPageModule)
   },
   {
-    path: 'list',
-    loadChildren: () => import('./list/list.module').then(m => m.ListPageModule)
+    path: 'shopping',
+    loadChildren: () => import('./shoppingList/shoppingList.module').then(m => m.ShoppingListPageModule)
   }
 ];
 

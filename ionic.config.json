@@ -1,5 +1,7 @@
 {
   "name": "TP_CrossPlatform_Angular",
-  "integrations": {},
+  "integrations": {
+    "cordova": {}
+  },
   "type": "angular"
 }

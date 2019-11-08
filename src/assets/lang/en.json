@@ -1,3 +1,28 @@
 {
-    "HELLO": "Hello"
-}
+    "FirstPage": {
+      "HELLO": "Hello",
+      "FirstPage": "First Page",
+      "reset": "reset"
+    },
+    "GeolocPage": {
+      "Geoloc": "Geolocation",
+      "longitude": "longitude",
+      "latitude": "latitude"
+    },
+    "MenuPage": {
+      "Menu": "Menu"
+    },
+    "ShoppingListPage": {
+      "Titre": "Shopping list",
+      "Quantity": "Quantity",
+      "Date": "Date",
+      "Create": "Create the article",
+      "Cancel": "Cancel",
+      "Article": "Article",
+      "Buy": "Buy",
+      "Delete": "Delete",
+      "Error_Name_Required":"The name is required",
+      "Error_Date_Required":"The date is required",
+      "Error_Quantity":"The quantity must be greater than zero"
+    }
+  }

@@ -13,18 +13,23 @@ import { TranslateService } from '@ngx-translate/core';
 export class AppComponent {
   public appPages = [
     {
-      title: 'Home',
-      url: '/home',
+      title: 'Menu',
+      url: '/menu',
       icon: 'home'
     },
     {
       title: 'First',
       url: '/first',
-      icon: 'first'
+      icon: 'phone-portrait'
     },
     {
-      title: 'List',
-      url: '/list',
+      title: 'Geoloc',
+      url: '/geoloc',
+      icon: 'pin'
+    },
+    {
+      title: 'Shopping',
+      url: '/shopping',
       icon: 'list'
     }
   ];
@@ -39,10 +44,7 @@ export class AppComponent {
     translate.setDefaultLang('fr');
     // the lang to use, if the lang isn't available, it will use the current loader to get them
     translate.use('fr');
-
     this.initializeApp();
-
-
   }
 
   initializeApp() {

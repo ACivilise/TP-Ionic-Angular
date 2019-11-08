@@ -1,20 +1,15 @@
 <ion-header>
-    <ion-toolbar>
-      <ion-buttons slot="start">
-        <ion-menu-button></ion-menu-button>
-      </ion-buttons>
-      <ion-title>
-        My first page
-      </ion-title>
-    </ion-toolbar>
-  </ion-header>
-  
-  <ion-content padding>
-     <h3>{{ 'HELLO' | translate }} World</h3>
-  </ion-content>
-  
+  <ion-toolbar>
+    <ion-buttons slot="start">
+      <ion-menu-button></ion-menu-button>
+    </ion-buttons>
+    <!-- <ion-title id="title">{{ 'FirstPage.FirstPage' | translate }}</ion-title> -->
+    <ion-title id="titleFirstPage">{{ title }}</ion-title>
+  </ion-toolbar>
+</ion-header>
 
-
-
-
-
+<ion-content padding>
+  <h3>{{ 'FirstPage.HELLO' | translate }} World</h3>
+  <label>{{param}}</label>
+  <component-timer [done]="ChangeTitleCallback"></component-timer>
+</ion-content>
