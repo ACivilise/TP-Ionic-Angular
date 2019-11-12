@@ -4,6 +4,7 @@ import { Platform } from '@ionic/angular';
 import { SplashScreen } from '@ionic-native/splash-screen/ngx';
 import { StatusBar } from '@ionic-native/status-bar/ngx';
 import { TranslateService } from '@ngx-translate/core';
+import { home, list, pin } from 'ionicons/icons';
 
 @Component({
   selector: 'app-root',
@@ -15,7 +16,7 @@ export class AppComponent {
     {
       title: 'Menu',
       url: '/menu',
-      icon: 'home'
+      icon: home
     },
     {
       title: 'First',
@@ -25,12 +26,12 @@ export class AppComponent {
     {
       title: 'Geoloc',
       url: '/geoloc',
-      icon: 'pin'
+      icon: pin
     },
     {
       title: 'Shopping',
       url: '/shopping',
-      icon: 'list'
+      icon: list
     }
   ];
 

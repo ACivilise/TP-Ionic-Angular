@@ -15,6 +15,7 @@
           <ion-searchbar placeholder="Nom du produit"
               (ionFocus)="Search()" 
               (ionCancel)="SearchLostFocus()"
+              (ionBlur)="SearchLostFocus()"
               (ionInput)="Search()"  
               [(ngModel)]="NewItem.Name"
               [showCancelButton]="true"

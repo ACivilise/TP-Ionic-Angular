@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { Geolocation } from '@ionic-native/geolocation/ngx';
+import { Geolocation, Geoposition } from '@ionic-native/geolocation/ngx';
 
 @Component({
   selector: 'app-geoloc',
@@ -10,7 +10,7 @@ export class GeolocPage {
   private longitude: number;
 
   constructor(private geolocation: Geolocation) {
-    this.geolocation.getCurrentPosition().then(function(resp) {
+    this.geolocation.getCurrentPosition().then(function(resp : Geoposition) {
       this.latitude = resp.coords.latitude as number;
       this.longitude = +resp.coords.longitude as number;
       this.increaseNumbers();
