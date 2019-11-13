@@ -1,96 +1,102 @@
 <ion-header>
-  <ion-toolbar>
-    <ion-buttons slot="start">
-      <ion-menu-button></ion-menu-button>
-    </ion-buttons>
-    <ion-title>{{ 'ShoppingListPage.Titre' | translate }}</ion-title>
-  </ion-toolbar>
+    <ion-toolbar>
+        <ion-buttons slot="start">
+            <ion-menu-button></ion-menu-button>
+        </ion-buttons>
+        <ion-title>{{ 'ShoppingListPage.Titre' | translate }}</ion-title>
+    </ion-toolbar>
 </ion-header>
 <ion-content>
-  <ion-button *ngIf="!CreateItemVisible" icon-end color="light" (click)="ShowCreateItem()" full large>
-      Ajoutez un article <ion-icon name="add-circle" color="secondary"></ion-icon>
-  </ion-button>
-  <div *ngIf="CreateItemVisible">
-      <div id="NomArticle" class="autocomplete">
-          <ion-searchbar placeholder="Nom du produit"
-              (ionFocus)="Search()" 
-              (ionCancel)="SearchLostFocus()"
-              (ionBlur)="SearchLostFocus()"
-              (ionInput)="Search()"  
-              [(ngModel)]="NewItem.Name"
-              [showCancelButton]="true"
-              [cancelButtonText]="Annuler"
-              debounce=250></ion-searchbar>
-          <ion-list>
-              <ion-item *ngFor="let word of AutocompleteList" (click)="SelectProposition(word)">
-                  {{word}}
-              </ion-item>
-          </ion-list>
-      </div>
-      <ion-list>
-          <ion-item>
-              <ion-label color="primary" stacked>{{ 'ShoppingListPage.Quantity' | translate }}</ion-label>
-              <ion-input placeholder="0" type="number" [(ngModel)]="NewItem.Quantity"></ion-input>
-          </ion-item>
-          <ion-item>
-              <ion-label color="primary">{{ 'ShoppingListPage.Date' | translate }}</ion-label>
-              <ion-datetime placeholder="{{NewItem.Date}}" displayFormat="MM/DD/YYYY" [(ngModel)]="NewItem.Date"></ion-datetime>
-          </ion-item>
-          <ion-grid>
-              <ion-row>
-                  <ion-col>
-                      <ion-button icon-end color="secondary" (click)="CreateNewItem()" full large>
-                          {{ 'ShoppingListPage.Create' | translate }}<ion-icon name="checkmark" color="light"></ion-icon>
-                      </ion-button>
-                  </ion-col>
-                  <ion-col>
-                      <ion-button icon-end color="danger" (click)="HideCreateItem()" full large>
-                          {{ 'ShoppingListPage.Cancel' | translate }}<ion-icon name="close-circle" color="light"></ion-icon>
-                      </ion-button>
-                  </ion-col>
-              </ion-row>
-          </ion-grid>
-      </ion-list>
-  </div>
+    <ion-button *ngIf="!CreateItemVisible" color="light" (click)="ShowCreateItem()" expand="full" size="large">
+        Ajoutez un article <ion-icon slot="end" name="add-circle" color="secondary"></ion-icon>
+    </ion-button>
+    <div *ngIf="CreateItemVisible">
+        <div id="NomArticle" class="autocomplete">
+            <ion-searchbar placeholder="Nom du produit"
+                (ionFocus)="Search()"
+                (ionCancel)="SearchLostFocus()"
+                (ionBlur)="SearchLostFocus()"
+                (ionInput)="Search()"
+                [(ngModel)]="NewItem.Name"
+                [showCancelButton]="true"
+                [cancelButtonText]="Annuler"
+                debounce=250></ion-searchbar>
+            <ion-list>
+                <ion-item *ngFor="let word of AutocompleteList" (click)="SelectProposition(word)">
+                    {{word}}
+                </ion-item>
+            </ion-list>
+        </div>
+        <ion-list>
+            <ion-item>
+                <ion-label color="primary" position="stacked">{{ 'ShoppingListPage.Quantity' | translate }}</ion-label>
+                <ion-input placeholder="0" type="number" [(ngModel)]="NewItem.Quantity"></ion-input>
+            </ion-item>
+            <ion-item>
+                <ion-label color="primary">{{ 'ShoppingListPage.Date' | translate }}</ion-label>
+                <ion-datetime placeholder="{{NewItem.Date}}" displayFormat="DD/MM/YYYY" [(ngModel)]="NewItem.Date">
+                </ion-datetime>
+            </ion-item>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>
+                        <ion-button icon-end color="secondary" (click)="CreateNewItem()" expand="full" size="large">
+                            {{ 'ShoppingListPage.Create' | translate }}<ion-icon name="checkmark" color="light">
+                            </ion-icon>
+                        </ion-button>
+                    </ion-col>
+                    <ion-col>
+                        <ion-button icon-end color="danger" (click)="HideCreateItem()" expand="full" size="large">
+                            {{ 'ShoppingListPage.Cancel' | translate }}<ion-icon name="close-circle" color="light">
+                            </ion-icon>
+                        </ion-button>
+                    </ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-list>
+    </div>
 
-  <ion-list *ngIf="ListCourse">
-      <ion-item-divider>
-          <ion-grid>
-              <ion-row>
-                  <ion-col>{{ 'ShoppingListPage.Article' | translate }}</ion-col>
-                  <ion-col>-</ion-col>
-                  <ion-col>{{ 'ShoppingListPage.Quantity' | translate }}</ion-col>
-                  <ion-col>-</ion-col>
-                  <ion-col>{{ 'ShoppingListPage.Date' | translate }}</ion-col>
-              </ion-row>
-          </ion-grid>
-      </ion-item-divider>
-      <!-- Sliding item -->
-      <ion-item-sliding *ngFor=" let ItemListDeCourse of ListCourse;">
-          <ion-item>
-              <!-- {{ItemListDeCourse.Nom}} - {{ItemListDeCourse.Date}} -->
-              <ion-grid>
-                  <ion-row>
-                      <ion-col>{{ItemListDeCourse.Name}}</ion-col>
-                      <ion-col>-</ion-col>
-                      <ion-col>{{ItemListDeCourse.Quantity}}</ion-col>
-                      <ion-col>-</ion-col>
-                      <ion-col>{{ItemListDeCourse.Date}}</ion-col>
-                  </ion-row>
-              </ion-grid>
-          </ion-item>
-          <ion-item-options side="start">
-              <ion-button color="success" (click)="buy(ItemListDeCourse)" icon-start>{{ 'ShoppingListPage.Buy' | translate }}
-                  <ion-icon name="cart" color="light">
-                  </ion-icon>
-              </ion-button>
-          </ion-item-options>
-          <ion-item-options side="end">
-              <ion-button color="danger" (click)="delete(ItemListDeCourse)" icon-start>{{ 'ShoppingListPage.Delete' | translate }}
-                  <ion-icon name="close-circle" color="light">
-                  </ion-icon>
-              </ion-button>
-          </ion-item-options>
-      </ion-item-sliding>
-  </ion-list>
+
+
+    <ion-list *ngIf="ListCourse">
+        <ion-item-divider>
+            <ion-grid>
+                <ion-row>
+                    <ion-col>{{ 'ShoppingListPage.Article' | translate }}</ion-col>
+                    <ion-col>-</ion-col>
+                    <ion-col>{{ 'ShoppingListPage.Quantity' | translate }}</ion-col>
+                    <ion-col>-</ion-col>
+                    <ion-col>{{ 'ShoppingListPage.Date' | translate }}</ion-col>
+                </ion-row>
+            </ion-grid>
+        </ion-item-divider>
+        <!-- Sliding item -->
+        <ion-item-sliding *ngFor=" let ItemListDeCourse of ListCourse;">
+            <ion-item>
+                <!-- {{ItemListDeCourse.Nom}} - {{ItemListDeCourse.Date}} -->
+                <ion-grid>
+                    <ion-row>
+                        <ion-col>{{ItemListDeCourse.Name}}</ion-col>
+                        <ion-col>-</ion-col>
+                        <ion-col>{{ItemListDeCourse.Quantity}}</ion-col>
+                        <ion-col>-</ion-col>
+                        <ion-col>{{ItemListDeCourse.Date}}</ion-col>
+                    </ion-row>
+                </ion-grid>
+            </ion-item>
+            <ion-item-options side="start">
+                <ion-button color="success" (click)="buy(ItemListDeCourse)">{{ 'ShoppingListPage.Buy' | translate }}
+                    <ion-icon slot="start" name="cart" color="light">
+                    </ion-icon>
+                </ion-button>
+            </ion-item-options>
+            <ion-item-options side="end">
+                <ion-button color="danger" (click)="delete(ItemListDeCourse)">
+                    {{ 'ShoppingListPage.Delete' | translate }}
+                    <ion-icon slot="start" name="close-circle" color="light">
+                    </ion-icon>
+                </ion-button>
+            </ion-item-options>
+        </ion-item-sliding>
+    </ion-list>
 </ion-content>

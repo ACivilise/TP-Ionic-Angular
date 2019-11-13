@@ -16,7 +16,7 @@ export class AppComponent {
     {
       title: 'Menu',
       url: '/menu',
-      icon: home
+      icon: 'home'
     },
     {
       title: 'First',
@@ -26,12 +26,12 @@ export class AppComponent {
     {
       title: 'Geoloc',
       url: '/geoloc',
-      icon: pin
+      icon: 'pin'
     },
     {
       title: 'Shopping',
       url: '/shopping',
-      icon: list
+      icon: 'list'
     }
   ];
 

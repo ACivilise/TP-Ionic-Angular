@@ -1,5 +1,3 @@
-/*Copyright Elysio, Inc.*/
-
 import { Component, Input } from "@angular/core";
 import { TimerClass } from "../../classes/timer.class";
 

@@ -54,3 +54,5 @@ export class ShoppingService {
         return previousArticles;
     }
 }
+
+
